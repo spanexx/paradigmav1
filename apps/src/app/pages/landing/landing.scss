@@ -1,0 +1,193 @@
+:host {
+  display: block;
+}
+
+.landing-shell {
+  @apply flex flex-col gap-16 pb-24;
+  background: radial-gradient(160% 160% at 50% -40%, color-mix(in oklab, var(--muted) 18%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--background) 0%, color-mix(in oklab, var(--background) 92%, var(--primary)) 100%);
+}
+
+.landing-section {
+  @apply px-6 py-20;
+}
+
+.landing-section--pale {
+  background: radial-gradient(140% 140% at 50% -40%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 65%), color-mix(in oklab, var(--background) 85%, white);
+}
+
+.section-container {
+  margin-inline: auto;
+  width: min(75vw, 880px);
+}
+
+.flow-section-container {
+  width: 100%;
+}
+
+.section-surface {
+  @apply rounded-3xl p-10 shadow-xl;
+  box-shadow: var(--shadow-xl);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--background) 88%, white) 0%, color-mix(in oklab, var(--background) 90%, var(--primary)) 100%);
+  border: 1px solid color-mix(in oklab, var(--border) 20%, transparent);
+}
+
+.flow-comparison-section .section-container {
+  width: clamp(0px, 80vw, 1440px);
+  margin-inline: auto;
+}
+
+.flow-section-container .section-surface {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .flow-section-container {
+    width: 100%;
+  }
+
+  .flow-section-container .section-surface {
+    width: 100%;
+  }
+}
+
+.section-subcopy {
+  @apply mt-4 max-w-3xl text-center text-base;
+  color: var(--muted-foreground);
+  margin-inline: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.section-cta {
+  @apply mt-16 flex flex-col items-center gap-4 text-center;
+}
+
+.cta-button {
+  @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white shadow-lg transition;
+  background: var(--primary);
+  box-shadow: 0 10px 15px -3px color-mix(in oklab, var(--primary) 30%, transparent), 0 4px 6px -4px color-mix(in oklab, var(--primary) 30%, transparent);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.section-cta__note {
+  @apply text-sm;
+  color: var(--muted-foreground);
+  max-width: 28rem;
+}
+
+.landing-offline-banner {
+  @apply mx-auto flex items-center gap-3 rounded-2xl px-5 py-3 text-sm shadow-sm;
+  border: 1px solid color-mix(in oklab, var(--secondary) 60%, transparent);
+  background: color-mix(in oklab, var(--secondary) 90%, transparent);
+  color: var(--secondary-foreground);
+  width: min(1120px, 92%);
+}
+
+.landing-offline-banner__timestamp {
+  @apply text-xs;
+  color: color-mix(in oklab, var(--secondary-foreground) 70%, transparent);
+}
+
+.flow-comparison-section {
+  @apply relative w-full;
+}
+
+.flow-tabs-mobile {
+  @apply flex rounded-lg p-1 mb-8 mt-6;
+  background: var(--muted);
+}
+
+.flow-tab {
+  @apply flex-1 rounded-md py-3 px-4 text-sm font-medium transition-colors cursor-pointer;
+  color: var(--muted-foreground);
+  // Make the tabs more touch-friendly
+  min-height: 44px; // Minimum touch target size
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flow-tab.active {
+  @apply shadow-sm;
+  background: var(--background);
+  color: var(--primary);
+}
+
+.flow-tab:hover:not(.active) {
+  background: var(--accent);
+}
+
+.flow-comparison-desktop {
+  @apply hidden gap-8 md:grid;
+}
+
+.flow-view {
+  @apply rounded-xl p-6 md:w-full;
+  border: 1px solid var(--border);
+  min-height: 400px; // Ensure adequate height for content
+  display: flex;
+  flex-direction: column;
+}
+
+.view-header {
+  @apply mb-6;
+}
+
+.view-header h3 {
+  @apply text-lg font-semibold;
+  color: var(--foreground);
+}
+
+.view-header p {
+  @apply text-sm mt-1;
+  color: var(--muted-foreground);
+}
+
+.flow-comparison-mobile {
+  @apply md:hidden;
+  min-height: 500px; // Ensure adequate space for mobile view
+  margin-top: 1rem;
+}
+
+.flow-skeleton-grid {
+  @apply grid gap-6 md:grid-cols-2;
+}
+
+.flow-skeleton-card {
+  @apply rounded-xl p-6 shadow-sm;
+  border: 1px solid var(--border);
+  background: var(--background);
+}
+
+.skeleton-line {
+  @apply h-4 w-full rounded-full;
+  background: var(--muted);
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--muted) 35%, transparent), transparent);
+  animation: skeleton-shimmer 1.6s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .flow-tabs-mobile {
+    @apply mb-6 mt-4;
+  }
+  
+  .flow-tab {
+    @apply py-1.5 px-3 text-xs;
+  }
+}

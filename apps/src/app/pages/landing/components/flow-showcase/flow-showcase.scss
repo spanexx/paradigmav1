@@ -1,0 +1,101 @@
+.showcase-container {
+  @apply min-h-screen p-6;
+  background: linear-gradient(135deg, var(--background), color-mix(in oklab, var(--background) 95%, var(--primary)));
+}
+
+.showcase-header {
+  @apply mb-12 text-center;
+}
+
+.showcase-header h1 {
+  @apply text-3xl font-bold md:text-4xl;
+  color: var(--foreground);
+}
+
+.showcase-header p {
+  @apply mt-2 text-lg;
+  color: var(--muted-foreground);
+}
+
+.showcase-content {
+  @apply mx-auto grid max-w-7xl gap-12 md:grid-cols-2;
+}
+
+.visualization-container {
+  @apply rounded-2xl p-6 shadow-lg;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  background: var(--background);
+}
+
+.visualization-header {
+  @apply mb-6 text-center;
+}
+
+.visualization-header h2 {
+  @apply text-xl font-semibold;
+  color: var(--foreground);
+}
+
+.visualization-header p {
+  @apply mt-1 text-sm;
+  color: var(--muted-foreground);
+}
+
+.visualization-wrapper {
+  @apply min-h-[500px];
+}
+
+.showcase-footer {
+  @apply mt-12;
+}
+
+.benefits-grid {
+  @apply grid gap-8 md:grid-cols-2;
+}
+
+.benefit-card {
+  @apply rounded-xl p-6;
+  border: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+  background: color-mix(in oklab, var(--muted) 50%, transparent);
+}
+
+.benefit-card h3 {
+  @apply mb-4 text-lg font-semibold;
+  color: var(--foreground);
+}
+
+.benefit-card ul {
+  @apply space-y-2;
+}
+
+.benefit-card li {
+  @apply flex items-start gap-2;
+  color: var(--muted-foreground);
+}
+
+.benefit-card li::before {
+  @apply content-['•'];
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .showcase-container {
+    @apply p-4;
+  }
+  
+  .showcase-content {
+    @apply grid-cols-1 gap-8;
+  }
+  
+  .visualization-container {
+    @apply p-4;
+  }
+  
+  .visualization-wrapper {
+    @apply min-h-[400px];
+  }
+  
+  .benefits-grid {
+    @apply grid-cols-1 gap-6;
+  }
+}

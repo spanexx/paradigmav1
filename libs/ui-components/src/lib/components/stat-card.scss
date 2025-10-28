@@ -1,0 +1,112 @@
+:host {
+  display: block;
+}
+
+.stat-card {
+  display: block;
+  border-radius: 1.5rem;
+  color: var(--card-foreground);
+}
+
+.stat-card__surface {
+  border-radius: inherit;
+  border: 1px solid color-mix(in oklab, var(--border) 78%, transparent);
+  background: color-mix(in oklab, var(--card) 97%, transparent);
+  box-shadow: var(--shadow-lg), 0 12px 30px -24px color-mix(in oklab, var(--primary) 18%, transparent);
+  padding: 1.85rem;
+}
+
+.stat-card__body {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.stat-card__value {
+  font-family: var(--font-display, 'Work Sans', sans-serif);
+  font-size: clamp(2.25rem, 5vw, 3rem);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.stat-card__label {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+.stat-card__delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  background: color-mix(in oklab, var(--muted) 50%, var(--card) 50%);
+  color: color-mix(in oklab, var(--muted-foreground) 80%, transparent);
+  border: 1px solid color-mix(in oklab, var(--border) 65%, transparent);
+}
+
+.stat-card__delta-icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1;
+  font-family: 'Material Symbols Outlined', 'Material Icons', sans-serif;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+.stat-card__delta-icon--positive {
+  color: color-mix(in oklab, var(--primary) 90%, transparent);
+}
+
+.stat-card__delta-icon--negative {
+  color: color-mix(in oklab, var(--destructive) 90%, transparent);
+}
+
+.stat-card__delta-icon--neutral {
+  color: var(--muted-foreground);
+}
+
+.stat-card__meta {
+  margin: 0;
+  font-size: 0.75rem;
+  color: color-mix(in oklab, var(--muted-foreground) 75%, transparent);
+}
+
+.stat-card--positive .stat-card__surface {
+  border-color: color-mix(in oklab, var(--primary) 38%, transparent);
+  box-shadow: var(--shadow-md), 0 14px 32px -22px color-mix(in oklab, var(--primary) 22%, transparent);
+}
+
+.stat-card--positive .stat-card__delta {
+  background: color-mix(in oklab, var(--primary) 22%, var(--card) 78%);
+  color: color-mix(in oklab, var(--primary) 88%, transparent);
+  border-color: color-mix(in oklab, var(--primary) 42%, transparent);
+}
+
+.stat-card--negative .stat-card__surface {
+  border-color: color-mix(in oklab, var(--destructive) 40%, transparent);
+  box-shadow: var(--shadow-md), 0 14px 30px -22px color-mix(in oklab, var(--destructive) 20%, transparent);
+}
+
+.stat-card--negative .stat-card__delta {
+  background: color-mix(in oklab, var(--destructive) 24%, var(--card) 76%);
+  color: color-mix(in oklab, var(--destructive) 92%, transparent);
+  border-color: color-mix(in oklab, var(--destructive) 45%, transparent);
+}
+
+.stat-card--neutral .stat-card__surface {
+  border-color: color-mix(in oklab, var(--border) 72%, transparent);
+}
+
+.stat-card--neutral .stat-card__delta {
+  background: color-mix(in oklab, var(--muted) 55%, var(--card) 45%);
+  color: color-mix(in oklab, var(--muted-foreground) 82%, transparent);
+  border-color: color-mix(in oklab, var(--border) 62%, transparent);
+}

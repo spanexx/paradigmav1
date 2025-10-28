@@ -1,0 +1,27 @@
+<div class="sparkline-card">
+  <div *ngIf="showMeta" class="sparkline-meta">
+    <div class="sparkline-meta__left">
+      <span class="sparkline-label">{{ label }}</span>
+      <span class="sparkline-value">{{ value }}</span>
+    </div>
+    <span class="sparkline-trend" [attr.data-trend]="trend">
+      <span class="material-symbols-outlined sparkline-trend__icon">{{ trendIcon }}</span>
+      {{ trendLabel }}
+    </span>
+  </div>
+
+  <svg [attr.viewBox]="viewBox" preserveAspectRatio="none" class="sparkline-graph">
+    <defs>
+      <linearGradient [attr.id]="gradientId" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="rgba(94, 234, 212, 0.75)" />
+        <stop offset="100%" stop-color="rgba(14, 165, 233, 0.15)" />
+      </linearGradient>
+    </defs>
+    <!-- Area fill -->
+    <path [attr.d]="areaPath()" class="sparkline-area" [attr.fill]="`url(#${gradientId})`" />
+    <!-- Line path -->
+    <path [attr.d]="path()" class="sparkline-path" [attr.stroke]="strokeColor" stroke-width="2" fill="none" />
+    <!-- Dot at the end point -->
+    <circle [attr.cx]="endPoint().x" [attr.cy]="endPoint().y" r="2" [attr.fill]="strokeColor" />
+  </svg>
+</div>

@@ -1,0 +1,45 @@
+<footer class="footer-shell">
+  <div class="footer-gradient"></div>
+  <div class="footer-curve"></div>
+
+  <div class="footer-inner">
+    <!-- Main Footer Content -->
+    <div class="footer-main px-6 py-16">
+      <div class="mx-auto w-[90%] space-y-12">
+        <!-- Company Info & Newsletter Row -->
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto]">
+          <div class="space-y-6">
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <img
+                  src="/logo.png"
+                  alt="{{ footerData.company.name }} logo"
+                  class="h-12 w-12 rounded-2xl border border-emerald-400/40 bg-emerald-400/10 p-3 transition-all duration-300 hover:border-emerald-400/60 hover:bg-emerald-400/20 hover:shadow-lg hover:shadow-emerald-500/20"
+                />
+                <span class="font-display text-xl font-semibold text-white">{{ footerData.company.name }}</span>
+              </div>
+              <p class="max-w-md text-base text-slate-300 leading-relaxed">{{ footerData.company.description }}</p>
+            </div>
+
+            <lib-footer-social [socialLinks]="footerData.social"></lib-footer-social>
+          </div>
+
+          <lib-footer-newsletter
+            [footerData]="footerData"
+            (subscribe)="onNewsletterSubscribe($event)"
+          ></lib-footer-newsletter>
+        </div>
+
+        <!-- Links Section -->
+        <lib-footer-links [linkGroups]="footerData.links"></lib-footer-links>
+      </div>
+    </div>
+
+    <!-- Bottom Legal Section -->
+    <div class="footer-bottom border-t border-white/5 px-6 py-6">
+      <div class="mx-auto w-[90%]">
+        <lib-footer-legal [footerData]="footerData"></lib-footer-legal>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,44 @@
+<section class="hero">
+  <div class="hero-gradient"></div>
+  <div class="hero-curve"></div>
+  <div class="hero-container mx-auto grid w-[92%] gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
+    <div class="hero-copy">
+      <p *ngIf="eyebrow" class="hero-eyebrow">{{ eyebrow }}</p>
+      <h1 class="hero-title">{{ title }}</h1>
+      <p *ngIf="message" class="hero-message">{{ message }}</p>
+
+      <form *ngIf="primaryLabel" class="hero-search" (ngSubmit)="onPrimaryClick()">
+        <span class="material-symbols-outlined hero-search-icon">search</span>
+        <input
+          type="search"
+          name="hero-search"
+          placeholder="Search assets, clubs, or themes"
+          class="hero-search-input"
+        />
+        <button type="submit" class="hero-search-action">
+          {{ primaryLabel }}
+          <span class="material-symbols-outlined">{{ primaryIcon }}</span>
+        </button>
+      </form>
+
+      <div *ngIf="secondaryLabel" class="hero-secondary">
+        <button type="button" (click)="onSecondaryClick()" class="hero-secondary-action">
+          <span class="material-symbols-outlined">{{ secondaryIcon }}</span>
+          {{ secondaryLabel }}
+        </button>
+      </div>
+
+      <div *ngIf="quickTags.length" class="hero-tags">
+        <span *ngFor="let tag of quickTags" class="hero-tag">{{ tag }}</span>
+      </div>
+    </div>
+
+    <div *ngIf="animatedStats.length" class="hero-stats">
+      <div *ngFor="let stat of animatedStats" class="hero-stat-card">
+        <span class="hero-stat-value">{{ stat.display }}</span>
+        <span class="hero-stat-label">{{ stat.label }}</span>
+        <nb-badge *ngIf="stat.badge" status="success" class="hero-stat-badge">{{ stat.badge }}</nb-badge>
+      </div>
+    </div>
+  </div>
+</section>

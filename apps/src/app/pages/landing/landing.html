@@ -1,0 +1,84 @@
+<div class="landing-shell">
+  <lib-hero-cta
+    [eyebrow]="hero.eyebrow"
+    [title]="hero.title"
+    [message]="hero.message"
+    [primaryLabel]="hero.primaryCta"
+    [secondaryLabel]="hero.secondaryCta"
+    [primaryIcon]="'arrow_forward'"
+    [secondaryIcon]="'play_circle'"
+    [stats]="heroStats"
+    [quickTags]="hero.tags"
+  ></lib-hero-cta>
+
+  <div
+    *ngIf="networkStatus.offline()"
+    class="landing-offline-banner"
+    role="status"
+    aria-live="polite"
+  >
+    <span class="material-symbols-outlined text-amber-700">cloud_off</span>
+    <span>You're viewing cached insights while offline.</span>
+    <span *ngIf="cachedTimestamp" class="landing-offline-banner__timestamp">
+      Cached {{ cachedTimestamp | date: 'short' }}
+    </span>
+  </div>
+
+  <app-metrics-section [metrics]="metrics"></app-metrics-section>
+  <app-problems-section [problems]="problems"></app-problems-section>
+  
+  <!-- Improved flow visualization section with tabs -->
+  <section class="landing-section flow-comparison-section">
+    <div class="section-container flow-section-container">
+      <div class="section-surface">
+        <!-- Tab navigation for mobile -->
+        <div class="flow-tabs-mobile">
+          <button 
+            class="flow-tab" 
+            [class.active]="!showProcessFlow"
+            (click)="showProcessFlow = false">
+            Timeline View
+          </button>
+          <button 
+            class="flow-tab" 
+            [class.active]="showProcessFlow"
+            (click)="showProcessFlow = true">
+            Process Flow View
+          </button>
+        </div>
+
+        <!-- Desktop view - show active selection only -->
+        <div class="flow-comparison-desktop">
+          <div class="flow-view timeline-view" *ngIf="!showProcessFlow">
+            <div class="view-header">
+              <h3>Timeline View</h3>
+              <p>Traditional step-by-step approach</p>
+            </div>
+            <app-flows-section [flows]="flows" [loading]="flowsLoading"></app-flows-section>
+          </div>
+          
+          <div class="flow-view process-flow-view" *ngIf="showProcessFlow">
+            <div class="view-header">
+              <h3>Process Flow View</h3>
+              <p>Interactive horizontal visualization</p>
+            </div>
+            <app-process-flow-section [flows]="flows" [loading]="processLoading"></app-process-flow-section>
+          </div>
+        </div>
+
+        <!-- Mobile view - show one at a time with tabs -->
+        <div class="flow-comparison-mobile" *ngIf="showProcessFlow">
+          <app-process-flow-section [flows]="flows" [loading]="processLoading"></app-process-flow-section>
+        </div>
+        <div class="flow-comparison-mobile" *ngIf="!showProcessFlow">
+          <app-flows-section [flows]="flows" [loading]="flowsLoading"></app-flows-section>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <app-storytelling-section [story]="story"></app-storytelling-section>
+  <app-differentiators-section [differentiators]="differentiators"></app-differentiators-section>
+  <app-faqs-section [faqs]="faqs"></app-faqs-section>
+</div>
+

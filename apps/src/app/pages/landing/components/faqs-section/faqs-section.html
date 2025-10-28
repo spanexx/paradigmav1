@@ -1,0 +1,29 @@
+<section class="landing-section">
+  <div class="section-container">
+    <div class="section-surface">
+      <lib-section-header 
+        align="center" 
+        title="Questions investors ask" 
+        description="Still curious? Here are the fast answers.">
+      </lib-section-header>
+      
+      <div class="faqs-grid">
+        <app-faq-item *ngFor="let faq of faqs" [faq]="faq"></app-faq-item>
+      </div>
+      
+      <div class="cta-card">
+        <div class="cta-content">
+          <h3 class="cta-title">Ready to explore live deals?</h3>
+          <p class="cta-description">Join a club in minutes and start building shared wealth.</p>
+        </div>
+        <a
+          routerLink="/dashboard"
+          class="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-600"
+        >
+          Browse assets
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+:host {
+  @apply block;
+}
+
+.newsletter-form {
+  @apply relative;
+
+  &::before {
+    content: '';
+    @apply absolute -inset-0.5 rounded-full bg-gradient-to-r from-emerald-400/20 to-teal-400/20 opacity-0 blur transition-opacity duration-300;
+  }
+
+  &:focus-within {
+    &::before {
+      @apply opacity-100;
+    }
+  }
+}
+
+.newsletter-input {
+  @apply relative z-10 transition-all duration-300;
+
+  &::placeholder {
+    @apply transition-colors duration-300;
+  }
+
+  &:focus {
+    @apply border-emerald-400/50 bg-white/10 shadow-lg shadow-emerald-500/10;
+  }
+}
+
+.newsletter-button {
+  @apply relative overflow-hidden transition-all duration-300;
+
+  &::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-emerald-300 to-teal-300 opacity-0 transition-opacity duration-300;
+  }
+
+  &:hover {
+    @apply shadow-xl shadow-emerald-500/30;
+
+    &::before {
+      @apply opacity-20;
+    }
+  }
+}

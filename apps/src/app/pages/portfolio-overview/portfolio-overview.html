@@ -1,0 +1,159 @@
+<div class="portfolio-shell">
+  <header class="portfolio-header">
+    <div>
+      <p class="portfolio-eyebrow">Command overview</p>
+      <h1>My portfolio</h1>
+    </div>
+    <div class="header-controls">
+      <div class="range-chips" role="group" aria-label="Time range">
+        <button
+          *ngFor="let range of ranges"
+          type="button"
+          (click)="setRange(range)"
+          [ngClass]="{ active: activeRange() === range }"
+        >
+          {{ range }}
+        </button>
+      </div>
+      <div class="header-filters">
+        <button type="button">
+          <span class="material-symbols-outlined">category</span>
+          Asset class
+          <span class="material-symbols-outlined">expand_more</span>
+        </button>
+        <button type="button">
+          <span class="material-symbols-outlined">flag</span>
+          Status
+          <span class="material-symbols-outlined">expand_more</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="stats-grid" aria-label="Key metrics">
+    <article *ngFor="let stat of stats" class="stat-card" [ngClass]="stat.trend">
+      <header>
+        <p>{{ stat.label }}</p>
+        <span class="material-symbols-outlined" aria-hidden="true">
+          {{ stat.trend === 'up' ? 'arrow_upward' : 'arrow_downward' }}
+        </span>
+      </header>
+      <p class="value">{{ stat.value }}</p>
+      <p class="delta">{{ stat.delta }}</p>
+    </article>
+  </section>
+
+  <div class="content-grid">
+    <section class="performance-panel" aria-labelledby="performance-title">
+      <div class="panel-header">
+        <div>
+          <h2 id="performance-title">Performance</h2>
+          <p class="panel-subcopy">{{ performanceHeadline() }}</p>
+        </div>
+        <button type="button" class="ghost-button">
+          <span class="material-symbols-outlined">upload_file</span>
+          Export chart
+        </button>
+      </div>
+      <div class="chart-placeholder" aria-hidden="true"></div>
+    </section>
+
+    <section class="holdings-panel" aria-labelledby="holdings-title">
+      <div class="panel-header">
+        <h2 id="holdings-title">Holdings</h2>
+        <button type="button" class="ghost-button">
+          <span class="material-symbols-outlined">grid_on</span>
+          Export CSV
+        </button>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Asset</th>
+              <th scope="col">Class</th>
+              <th scope="col" class="numeric">Current value</th>
+              <th scope="col" class="numeric">Cost basis</th>
+              <th scope="col" class="numeric">Unrealised P/L</th>
+              <th scope="col" class="actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let holding of holdings">
+              <td class="asset-name">{{ holding.name }}</td>
+              <td>{{ holding.assetClass }}</td>
+              <td class="numeric">{{ holding.currentValue }}</td>
+              <td class="numeric">{{ holding.costBasis }}</td>
+              <td class="numeric" [ngClass]="holding.pnlTrend">
+                {{ holding.pnl }}
+              </td>
+              <td class="actions">
+                <button type="button" class="icon-button" aria-label="Open actions for {{ holding.name }}">
+                  <span class="material-symbols-outlined">more_vert</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <aside class="side-stack">
+      <section class="allocation-panel" aria-labelledby="allocation-title">
+        <div class="panel-header">
+          <h2 id="allocation-title">Portfolio allocation</h2>
+          <button type="button" class="ghost-button">
+            <span class="material-symbols-outlined">pie_chart</span>
+            Rebalance
+          </button>
+        </div>
+        <div class="donut-placeholder" aria-hidden="true"></div>
+        <ul class="allocation-list">
+          <li *ngFor="let slice of allocation">
+            <span class="dot" [style.background-color]="slice.color"></span>
+            <span class="label">{{ slice.label }}</span>
+            <span class="weight">{{ slice.weight }}%</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="watchlist-panel" aria-labelledby="watchlist-title">
+        <div class="panel-header">
+          <h2 id="watchlist-title">Watchlist</h2>
+          <button type="button" class="ghost-button">
+            <span class="material-symbols-outlined">add</span>
+            Track asset
+          </button>
+        </div>
+        <ul class="watchlist">
+          <li *ngFor="let item of watchlist">
+            <div>
+              <p class="name">{{ item.name }}</p>
+              <p class="category">{{ item.category }}</p>
+            </div>
+            <div class="value">
+              <span>{{ item.value }}</span>
+              <span class="change" [ngClass]="item.trend">{{ item.change }}</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="reports-panel" aria-labelledby="reports-title">
+        <div class="panel-header">
+          <h2 id="reports-title">Reports &amp; exports</h2>
+        </div>
+        <div class="reports-actions">
+          <button type="button" class="primary-button">
+            <span class="material-symbols-outlined">download</span>
+            Download full report
+          </button>
+          <button type="button" class="ghost-button">
+            <span class="material-symbols-outlined">share</span>
+            Share snapshot
+          </button>
+        </div>
+      </section>
+    </aside>
+  </div>
+</div>

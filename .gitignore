@@ -44,3 +44,9 @@ Thumbs.db
 .github/instructions/nx.instructions.md
 
 .angular
+
+# Task Management MCP Database
+tskdb.json
+*.md
+docs/
+ever-gauzy

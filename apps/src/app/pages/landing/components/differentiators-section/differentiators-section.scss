@@ -1,0 +1,21 @@
+section {
+  @apply px-6 py-24;
+}
+
+.differentiators-grid {
+  @apply mx-auto mt-16 grid gap-8;
+  width: min(1120px, 92%);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .differentiators-grid {
+    @apply gap-10;
+  }
+}
+
+@media (max-width: 768px) {
+  .differentiators-grid {
+    grid-template-columns: 1fr;
+  }
+}

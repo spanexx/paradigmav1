@@ -1,0 +1,16 @@
+<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+  <div *ngFor="let group of linkGroups" class="space-y-4">
+    <h4 class="font-display text-sm font-semibold uppercase tracking-wider text-white">{{ group.title }}</h4>
+    <nav class="space-y-3">
+      <a
+        *ngFor="let link of group.links"
+        [href]="link.href"
+        [target]="link.external ? '_blank' : '_self'"
+        [rel]="link.external ? 'noopener noreferrer' : undefined"
+        class="footer-link block text-sm text-slate-300"
+      >
+        {{ link.label }}
+      </a>
+    </nav>
+  </div>
+</div>

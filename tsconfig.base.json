@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@paradigma/ui-components": ["libs/ui-components/src/index.ts"],
+      "@paradigma/dashboard-data": ["libs/domain/dashboard/src/index.ts"],
+      "@paradigma/dashboard": ["libs/domain/dashboard/src/index.ts"],
+      "@paradigma/dashboard-feature": [
+        "libs/domain/dashboard/feature/src/index.ts"
+      ],
+      "@paradigma/dashboard-ui": ["libs/domain/dashboard/ui/src/index.ts"],
+      "@paradigma/dashboard-utils": ["libs/domain/dashboard/utils/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

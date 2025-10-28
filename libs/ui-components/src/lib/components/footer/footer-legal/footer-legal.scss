@@ -1,0 +1,29 @@
+:host {
+  @apply block;
+}
+
+.legal-link {
+  @apply relative transition-all duration-300;
+
+  &::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-emerald-400/60 transition-all duration-300;
+  }
+
+  &:hover {
+    @apply text-emerald-300;
+
+    &::after {
+      @apply w-full;
+    }
+  }
+}
+
+.copyright-text {
+  @apply relative;
+
+  &::before {
+    content: '💚';
+    @apply absolute -left-6 top-0 opacity-60;
+  }
+}

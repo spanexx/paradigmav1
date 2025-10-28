@@ -1,0 +1,59 @@
+.opportunity-card {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklab, var(--border) 85%, transparent);
+  background: color-mix(in oklab, var(--card) 92%, transparent);
+  color: var(--card-foreground);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: box-shadow 160ms ease, border-color 160ms ease;
+
+  &:hover {
+    box-shadow: var(--shadow-xl);
+    border-color: color-mix(in oklab, var(--ring) 65%, transparent);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: color-mix(in oklab, var(--ring) 12%, transparent);
+    opacity: 0;
+    transition: opacity 160ms ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  .card-title {
+    font-family: var(--font-display, 'Work Sans', sans-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+
+  .card-meta {
+    color: var(--muted-foreground);
+  }
+
+  .card-positive {
+    color: var(--primary);
+  }
+}
+
+:host-context(.dark-theme) {
+  .opportunity-card {
+    background: color-mix(in oklab, var(--card) 92%, transparent);
+    border-color: color-mix(in oklab, var(--border) 85%, transparent);
+    box-shadow: var(--shadow-lg);
+
+    .card-title {
+      color: var(--foreground);
+    }
+
+    .card-meta {
+      color: var(--muted-foreground);
+    }
+  }
+}

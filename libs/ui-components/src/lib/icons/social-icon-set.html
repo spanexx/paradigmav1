@@ -1,0 +1,11 @@
+<ng-container *ngIf="iconPath; else fallback">
+  <span class="icon-wrapper" role="presentation">
+    <svg [attr.viewBox]="iconPath.viewBox || '0 0 24 24'" aria-hidden="true">
+      <path [attr.d]="iconPath.path"></path>
+    </svg>
+  </span>
+</ng-container>
+
+<ng-template #fallback>
+  <span class="icon-wrapper icon-fallback" aria-hidden="true">{{ fallback }}</span>
+</ng-template>

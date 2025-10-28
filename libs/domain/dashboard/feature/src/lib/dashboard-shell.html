@@ -1,0 +1,93 @@
+<div class="dashboard-shell" *ngIf="vm$ | async as vm">
+  <section class="dashboard-hero">
+    <lib-hero [hero]="vm.hero" [wallet]="vm.wallet" [rewards]="vm.rewards"></lib-hero>
+  </section>
+
+  <section class="dashboard-kpis">
+    <lib-stat-card
+      *ngFor="let kpi of vm.kpis; trackBy: trackByKpi"
+      [label]="kpi.label"
+      [value]="kpi.value"
+      [delta]="kpi.delta"
+      [variant]="kpi.trend === 'up' ? 'positive' : kpi.trend === 'down' ? 'negative' : 'neutral'"
+      [deltaIcon]="kpi.trend === 'up' ? 'north_east' : kpi.trend === 'down' ? 'south_east' : 'horizontal_rule'"
+      [meta]="kpi.caption"
+    ></lib-stat-card>
+  </section>
+
+  <lib-actions-list
+    class="dashboard-actions"
+    [filters]="vm.quickFilters"
+    [activeFilter]="vm.activeFilter"
+    [actions]="vm.filteredActions"
+    (filterChange)="onFilterChange($event)"
+  ></lib-actions-list>
+
+  <section class="dashboard-main">
+    <div class="main-primary">
+      <section class="card opportunities">
+        <header>
+          <h2 class="card-title">Opportunities in motion</h2>
+          <button type="button" class="text-link">View all</button>
+        </header>
+
+        <div class="opportunities-grid">
+          <lib-opportunity-card
+            *ngFor="let opportunity of vm.opportunities; trackBy: trackByOpportunity"
+            [opportunity]="opportunity"
+          ></lib-opportunity-card>
+        </div>
+      </section>
+
+      <section class="card alerts">
+        <header>
+          <h2 class="card-title">Risk &amp; compliance alerts</h2>
+        </header>
+
+        <ul class="alerts-list">
+          <li *ngFor="let alert of vm.alerts; trackBy: trackByAlert" class="alert-item" [ngClass]="severityClass(alert.severity)">
+            <h3 class="alert-title">{{ alert.title }}</h3>
+            <p class="alert-detail">{{ alert.meta }}</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="card pipelines">
+        <header>
+          <h2 class="card-title">Workflow pipelines</h2>
+        </header>
+
+        <ul class="pipelines-list">
+          <li *ngFor="let pipeline of vm.pipelines; trackBy: trackByPipeline" class="pipeline-item">
+            <div class="pipeline-meta">
+              <h3 class="pipeline-title">{{ pipeline.name }}</h3>
+              <span class="pipeline-eta">{{ pipeline.eta }}</span>
+            </div>
+            <p class="pipeline-owners">Owners · {{ pipeline.owners.join(', ') }}</p>
+            <div class="progress-track">
+              <div class="progress-bar" [style.width.%]="pipeline.progress"></div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <aside class="main-secondary">
+      <section class="card club-pulse">
+        <lib-club-pulse [pulse]="vm.clubPulse"></lib-club-pulse>
+      </section>
+
+      <section class="card signals">
+        <lib-signal-stream [activityStream]="vm.activityStream"></lib-signal-stream>
+      </section>
+
+      <section class="card allocation">
+        <lib-allocation-panel
+          [allocation]="vm.allocation"
+          [liquidityWindows]="vm.liquidityWindows"
+          [governanceChecks]="vm.governanceChecks"
+        ></lib-allocation-panel>
+      </section>
+    </aside>
+  </section>
+</div>

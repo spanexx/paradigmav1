@@ -1,0 +1,164 @@
+<div class="asset-discovery-shell">
+  <aside class="filters-panel" aria-label="Asset filters">
+    <header class="filters-header">
+      <div class="filters-icon">
+        <span class="material-symbols-outlined">filter_alt</span>
+      </div>
+      <div>
+        <p class="filters-eyebrow">Filters</p>
+        <p class="filters-subcopy">Refine and personalise deal flow.</p>
+      </div>
+    </header>
+
+    <section class="filter-block" aria-labelledby="asset-type-title">
+      <h3 id="asset-type-title">{{ assetTypeFilters.title }}</h3>
+      <ul>
+        <li *ngFor="let option of assetTypeFilters.options">
+          <label class="filter-option">
+            <input class="filter-checkbox" type="checkbox" [checked]="option === 'Real estate'" />
+            <span>{{ option }}</span>
+          </label>
+        </li>
+      </ul>
+    </section>
+
+    <section class="filter-block" aria-labelledby="ticket-band-title">
+      <h3 id="ticket-band-title">Ticket band</h3>
+      <div class="ticket-group">
+        <button
+          type="button"
+          *ngFor="let band of ticketBands"
+          (click)="setTicket(band)"
+          [ngClass]="{ active: activeTicket() === band }"
+        >
+          {{ band }}
+        </button>
+      </div>
+      <p class="ticket-caption">Drag to fine-tune min. contribution.</p>
+      <input type="range" min="1" max="100" class="ticket-range" />
+      <div class="ticket-scale">
+        <span>€1k</span>
+        <span>€1M+</span>
+      </div>
+    </section>
+
+    <section class="filter-block" aria-labelledby="risk-band-title">
+      <h3 id="risk-band-title">Risk band</h3>
+      <div class="risk-group">
+        <button
+          type="button"
+          *ngFor="let risk of riskBands"
+          (click)="setRisk(risk)"
+          [ngClass]="{ active: activeRisk() === risk }"
+        >
+          {{ risk }}
+        </button>
+      </div>
+    </section>
+
+    <section class="filter-block" aria-labelledby="sustainability-title">
+      <h3 id="sustainability-title">{{ sustainabilityFilters.title }}</h3>
+      <ul>
+        <li *ngFor="let tag of sustainabilityFilters.options">
+          <label class="filter-option">
+            <input class="filter-checkbox" type="checkbox" />
+            <span>{{ tag }}</span>
+          </label>
+        </li>
+      </ul>
+    </section>
+
+    <div class="filters-actions">
+      <button type="button" class="apply-button">Apply filters</button>
+      <button type="button" class="clear-button">
+        <span class="material-symbols-outlined">delete_sweep</span>
+        Clear all
+      </button>
+    </div>
+  </aside>
+
+  <main class="discovery-content">
+    <header class="discovery-toolbar">
+      <nav aria-label="Breadcrumbs" class="breadcrumbs">
+        <ol>
+          <li *ngFor="let crumb of breadcrumbs; let last = last">
+            <ng-container *ngIf="!last; else lastBreadcrumb">
+              <a href="#">{{ crumb }}</a>
+              <span class="material-symbols-outlined">chevron_right</span>
+            </ng-container>
+            <ng-template #lastBreadcrumb>
+              <span class="current">{{ crumb }}</span>
+            </ng-template>
+          </li>
+        </ol>
+      </nav>
+
+      <div class="toolbar-actions">
+        <button type="button" class="toolbar-button" aria-label="Grid view">
+          <span class="material-symbols-outlined">grid_view</span>
+        </button>
+        <button type="button" class="toolbar-button" aria-label="Map view">
+          <span class="material-symbols-outlined">map</span>
+        </button>
+        <label class="sort-select">
+          <span class="visually-hidden">Sort deals</span>
+          <select [value]="activeSort()" (change)="onSortChange($event)">
+            <option *ngFor="let option of sortOptions" [value]="option.value">
+              Sort by: {{ option.label }}
+            </option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <div class="search-bar">
+      <span class="material-symbols-outlined">search</span>
+      <input type="search" placeholder="Search by asset or manager..." />
+    </div>
+
+    <div class="recommend-banner" role="status" aria-live="polite">
+      <div class="banner-copy">
+        <span class="material-symbols-outlined">campaign</span>
+        <p>{{ recommendedHeadline }}</p>
+      </div>
+      <button type="button" aria-label="Dismiss recommendation">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <section class="deals-grid" aria-label="Available assets">
+      <article *ngFor="let deal of deals" class="deal-card">
+        <div class="deal-image" [style.background-image]="'url(' + deal.image + ')'">
+          <span *ngIf="deal.statusBadge" class="deal-status">{{ deal.statusBadge }}</span>
+        </div>
+        <div class="deal-body">
+          <header>
+            <h2>{{ deal.title }}</h2>
+            <p class="manager">by {{ deal.manager }}</p>
+          </header>
+          <div class="deal-location">
+            <span class="material-symbols-outlined">location_on</span>
+            <span>{{ deal.location }}</span>
+          </div>
+          <ul class="deal-tags">
+            <li>{{ deal.minimum }}</li>
+            <li>{{ deal.irr }}</li>
+            <li>{{ deal.term }}</li>
+          </ul>
+          <ul class="sustainability-tags">
+            <li *ngFor="let tag of deal.sustainability">{{ tag }}</li>
+          </ul>
+          <div class="fund-progress">
+            <div class="fund-meta">
+              <span>Funding progress</span>
+              <span>{{ deal.fundingProgress }}%</span>
+            </div>
+            <div class="fund-bar">
+              <div class="fund-fill" [style.width.%]="deal.fundingProgress"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</div>

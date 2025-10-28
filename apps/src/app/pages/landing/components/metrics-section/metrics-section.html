@@ -1,0 +1,33 @@
+<section class="metrics-section landing-section landing-section--pale">
+  <div class="section-container">
+    <div class="section-surface metrics-surface">
+      <lib-section-header
+        align="center"
+        eyebrow="Performance insights"
+        title="Proof our clubs deliver"
+        description="A living snapshot of how Paradigma portfolios are compounding across the network."
+      ></lib-section-header>
+
+      <div class="metrics-grid">
+        <lib-sparkline
+          *ngFor="let metric of metrics"
+          [label]="metric.label"
+          [value]="metric.value"
+          [trend]="metric.trend || 'steady'"
+          [data]="metric.data"
+        ></lib-sparkline>
+      </div>
+
+      <div class="mt-12 flex flex-col items-center gap-4 text-center">
+        <a
+          routerLink="/dashboard"
+          class="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-600"
+        >
+          View live performance console
+          <span class="material-symbols-outlined text-base">insights</span>
+        </a>
+        <p class="max-w-md text-sm text-slate-500">See real-time dashboards, cash views, and trend alerts tailored to your clubs.</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+:host {
+  @apply block;
+}
+
+.section-header {
+  @apply flex flex-col items-center gap-4 text-center;
+  color: #0f172a;
+}
+
+.section-header--start {
+  @apply items-start text-left;
+}
+
+.section-header--end {
+  @apply items-end text-right;
+}
+
+.section-header__icon {
+  @apply flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50 text-emerald-500 shadow-inner shadow-emerald-100;
+  font-size: 1.45rem;
+}
+
+.section-header__content {
+  @apply max-w-3xl;
+}
+
+.section-header__eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.35em];
+  color: rgba(14, 116, 144, 0.7);
+  letter-spacing: 0.2em;
+}
+
+.section-header__title {
+  @apply font-display text-3xl font-semibold;
+}
+
+.section-header__description {
+  @apply mt-3 text-base leading-relaxed text-slate-500;
+}

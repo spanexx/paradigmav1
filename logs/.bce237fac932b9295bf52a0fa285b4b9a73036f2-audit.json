@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/spanexx/Shared/Projects/Paradigma/paradigma/logs/.bce237fac932b9295bf52a0fa285b4b9a73036f2-audit.json",
+    "files": [
+        {
+            "date": 1761634787456,
+            "name": "/home/spanexx/Shared/Projects/Paradigma/paradigma/logs/mcp-puppeteer-2025-10-28.log",
+            "hash": "e0e9e121dc4d738248c8b661d66eebea53064c11ae15eafc3effcb91286573bc"
+        }
+    ],
+    "hashType": "sha256"
+}

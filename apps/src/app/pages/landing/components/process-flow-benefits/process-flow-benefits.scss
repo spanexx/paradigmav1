@@ -1,0 +1,89 @@
+.benefits-container {
+  @apply rounded-3xl p-8 shadow-lg;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  background: var(--background);
+}
+
+.benefits-header {
+  @apply mb-12 text-center;
+}
+
+.benefits-header h2 {
+  @apply text-2xl font-bold md:text-3xl;
+  color: var(--foreground);
+}
+
+.benefits-header p {
+  @apply mt-2 text-lg;
+  color: var(--muted-foreground);
+}
+
+.benefits-grid {
+  @apply grid gap-8 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.benefit-card {
+  @apply rounded-2xl p-6 transition-all duration-300;
+  border: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+  background: color-mix(in oklab, var(--muted) 50%, transparent);
+  
+  &:hover {
+    border: 1px solid var(--primary);
+    background: color-mix(in oklab, var(--primary) 5%, transparent);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.benefit-icon {
+  @apply mb-4 flex h-12 w-12 items-center justify-center rounded-full;
+  background: color-mix(in oklab, var(--primary) 10%, transparent);
+  color: var(--primary);
+}
+
+.benefit-icon .material-icons {
+  @apply text-2xl;
+}
+
+.benefit-title {
+  @apply mb-3 text-xl font-semibold;
+  color: var(--foreground);
+}
+
+.benefit-description {
+  color: var(--muted-foreground);
+}
+
+.benefits-footer {
+  @apply mt-12 text-center;
+}
+
+.benefits-footer p {
+  @apply text-lg font-medium;
+  color: var(--foreground);
+}
+
+@media (max-width: 768px) {
+  .benefits-container {
+    @apply p-4;
+  }
+  
+  .benefits-header h2 {
+    @apply text-xl;
+  }
+  
+  .benefits-header p {
+    @apply text-base;
+  }
+  
+  .benefits-grid {
+    @apply gap-6;
+  }
+  
+  .benefit-card {
+    @apply p-4;
+  }
+  
+  .benefit-title {
+    @apply text-lg;
+  }
+}

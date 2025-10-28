@@ -1,0 +1,147 @@
+<div class="compliance-shell">
+  <header class="page-lead">
+    <div class="lead-copy">
+      <div class="lead-title">
+        <h1>Compliance center</h1>
+        <span class="status-pill">Action required</span>
+      </div>
+      <p>Track identity checks, accreditation, and regulatory workflow completion in one pane.</p>
+    </div>
+    <div class="lead-links">
+      <a href="#">Support</a>
+      <span aria-hidden="true">|</span>
+      <a href="#">FAQs</a>
+    </div>
+  </header>
+
+  <section class="completion-card" aria-label="Overall compliance completion">
+    <div class="completion-head">
+      <div>
+        <p>Overall completion</p>
+        <h2>{{ completion() }}%</h2>
+      </div>
+      <p class="completion-caption">{{ completionCopy() }}</p>
+    </div>
+    <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="completion()" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-fill" [style.width.%]="completion()"></div>
+    </div>
+  </section>
+
+  <section class="timeline" aria-labelledby="timeline-title">
+    <h2 id="timeline-title">Verification timeline</h2>
+    <ul>
+      <li *ngFor="let stage of timeline" [class]="stageClass(stage)">
+        <span class="material-symbols-outlined icon">{{ stage.icon }}</span>
+        <div>
+          <p class="stage-name">{{ stage.name }}</p>
+          <p class="stage-description">{{ stage.description }}</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="task-queue" aria-labelledby="tasks-title">
+    <div class="section-head">
+      <h2 id="tasks-title">Task queue</h2>
+      <span>{{ tasks.length }} open</span>
+    </div>
+    <ul>
+      <li *ngFor="let task of tasks">
+        <div class="task-detail">
+          <span class="material-symbols-outlined">{{ task.icon }}</span>
+          <div>
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.detail }}</p>
+            <p class="due">{{ task.due }}</p>
+          </div>
+        </div>
+        <button type="button" class="primary">{{ task.actionLabel }}</button>
+      </li>
+    </ul>
+  </section>
+
+  <section class="document-vault" aria-labelledby="document-title">
+    <div class="section-head">
+      <h2 id="document-title">Document vault</h2>
+      <div class="vault-actions">
+        <div class="document-filter" role="radiogroup" aria-label="Document category">
+          <button type="button" class="active">All</button>
+          <button type="button">Identity</button>
+          <button type="button">Tax</button>
+        </div>
+        <button type="button" class="primary">
+          <span class="material-symbols-outlined">upload</span>
+          Upload new
+        </button>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Document</th>
+            <th scope="col">Uploaded</th>
+            <th scope="col">Status</th>
+            <th scope="col">Expiry</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doc of documents">
+            <td>{{ doc.name }}</td>
+            <td>{{ doc.uploadedAt }}</td>
+            <td>
+              <span class="doc-status" [ngClass]="doc.status">
+                {{ doc.status === 'approved' ? 'Approved' : doc.status === 'review' ? 'In review' : 'Missing' }}
+              </span>
+            </td>
+            <td>{{ doc.expiresAt ?? '—' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <aside class="sidebar">
+    <section class="risk-alerts" aria-labelledby="risk-title">
+      <h2 id="risk-title">Risk alerts</h2>
+      <article *ngFor="let alert of alerts">
+        <h3>{{ alert.title }}</h3>
+        <p>{{ alert.detail }}</p>
+        <button type="button" class="danger">{{ alert.cta }}</button>
+      </article>
+    </section>
+
+    <section class="profile-card" aria-labelledby="profile-title">
+      <div class="section-head">
+        <h2 id="profile-title">Investor profile</h2>
+        <button type="button" class="ghost">
+          <span class="material-symbols-outlined">edit</span>
+          Update
+        </button>
+      </div>
+      <dl>
+        <div>
+          <dt>Accreditation status</dt>
+          <dd class="positive">Accredited investor</dd>
+        </div>
+        <div>
+          <dt>Expires</dt>
+          <dd>19 November 2027</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="audit-log" aria-labelledby="audit-title">
+      <h2 id="audit-title">Audit log</h2>
+      <ul>
+        <li *ngFor="let entry of audit">
+          <span class="material-symbols-outlined" aria-hidden="true">history</span>
+          <div>
+            <p>{{ entry.label }}</p>
+            <p class="timestamp">{{ entry.timestamp }}</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </aside>
+</div>

@@ -1,0 +1,20 @@
+:host {
+  @apply block;
+}
+
+.social-link {
+  @apply relative overflow-hidden transition-all duration-300;
+
+  &::before {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-gradient-to-r from-emerald-400/20 to-teal-400/20 opacity-0 transition-opacity duration-300;
+  }
+
+  &:hover {
+    @apply scale-110 shadow-lg shadow-emerald-500/20;
+
+    &::before {
+      @apply opacity-100;
+    }
+  }
+}

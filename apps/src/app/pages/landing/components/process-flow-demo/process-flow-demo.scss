@@ -1,0 +1,44 @@
+.demo-container {
+  @apply min-h-screen p-6;
+  background: linear-gradient(135deg, var(--background), color-mix(in oklab, var(--background) 95%, var(--primary)));
+}
+
+.demo-header {
+  @apply mb-12 text-center;
+}
+
+.demo-header h1 {
+  @apply text-3xl font-bold md:text-4xl;
+  color: var(--foreground);
+}
+
+.demo-header p {
+  @apply mt-2 text-lg;
+  color: var(--muted-foreground);
+}
+
+.demo-main {
+  @apply mx-auto max-w-7xl;
+}
+
+.demo-footer {
+  @apply mt-16 text-center;
+}
+
+.demo-footer p {
+  color: var(--muted-foreground);
+}
+
+@media (max-width: 768px) {
+  .demo-container {
+    @apply p-4;
+  }
+  
+  .demo-header h1 {
+    @apply text-2xl;
+  }
+  
+  .demo-header p {
+    @apply text-base;
+  }
+}

@@ -1,0 +1,104 @@
+.actions-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--card-foreground);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(18px);
+}
+
+.actions-title {
+  font-family: var(--font-display, 'Work Sans', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.actions-subtitle {
+  color: var(--muted-foreground);
+}
+
+.filter-button {
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 85%, transparent);
+  color: var(--muted-foreground);
+  transition: box-shadow 120ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.filter-button.is-active {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.filter-button:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--primary);
+}
+
+.action-card {
+  position: relative;
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  background: color-mix(in oklab, var(--card) 88%, transparent);
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.action-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in oklab, var(--ring) 10%, transparent);
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+
+.action-card:hover {
+  border-color: var(--ring);
+  box-shadow: var(--shadow-md);
+}
+
+.action-card:hover::after {
+  opacity: 1;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+.action-icon {
+  background: color-mix(in oklab, var(--primary) 12%, transparent);
+  color: var(--primary);
+}
+
+.action-title {
+  color: var(--foreground);
+}
+
+.action-meta {
+  color: var(--muted-foreground);
+}
+
+.action-due {
+  color: var(--secondary-foreground);
+}
+
+:host-context(.dark-theme) {
+  .actions-shell {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .filter-button {
+    border-color: color-mix(in oklab, var(--border) 70%, transparent);
+  }
+
+  .action-card {
+    border-color: color-mix(in oklab, var(--border) 70%, transparent);
+  }
+}

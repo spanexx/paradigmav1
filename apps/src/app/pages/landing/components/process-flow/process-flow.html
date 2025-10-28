@@ -1,0 +1,76 @@
+<div class="process-flow">
+  <div class="process-flow__container" *ngIf="!loading && flows.length; else processFlowSkeleton">
+    <!-- Process Steps -->
+    <div class="process-flow__steps">
+      <div
+        *ngFor="let flow of flows; let i = index"
+        class="process-flow__step"
+        [class.process-flow__step--active]="i === activeStep"
+        (click)="setActiveStep(i)"
+        (keydown.enter)="setActiveStep(i)"
+        (keydown.space)="setActiveStep(i)"
+        tabindex="0"
+        role="button"
+        [attr.aria-pressed]="i === activeStep"
+      >
+        <div class="process-flow__step-marker">
+          <span class="process-flow__step-number">0{{ i + 1 }}</span>
+        </div>
+        <div class="process-flow__step-content">
+          <h3 class="process-flow__step-title">{{ flow.title }}</h3>
+          <p class="process-flow__step-summary">{{ flow.summary }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Line -->
+    <div class="process-flow__progress">
+      <div class="process-flow__progress-line"></div>
+      <div
+        class="process-flow__progress-fill"
+        [style.width.%]="((activeStep + 1) / flows.length) * 100"
+      ></div>
+    </div>
+
+    <!-- Active Step Details -->
+    <div class="process-flow__details" *ngIf="activeFlow as flow">
+      <div class="process-flow__details-header">
+        <h3 class="process-flow__details-title">{{ flow.title }}</h3>
+        <p class="process-flow__details-summary">{{ flow.summary }}</p>
+      </div>
+
+      <div class="process-flow__details-steps">
+        <h4 class="process-flow__details-subtitle">Key actions in this stage:</h4>
+        <ul class="process-flow__details-list">
+          <li *ngFor="let step of flow.steps" class="process-flow__details-item">
+            <span class="process-flow__details-bullet"></span>
+            <span class="process-flow__details-text">{{ step }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #processFlowSkeleton>
+  <div class="flow-skeleton-grid">
+    <div class="flow-skeleton-card space-y-4">
+      <div class="skeleton-line h-10 w-32"></div>
+      <div class="skeleton-line h-3 w-5/6"></div>
+      <div class="space-y-2">
+        <div class="skeleton-line h-3"></div>
+        <div class="skeleton-line h-3"></div>
+        <div class="skeleton-line h-3 w-2/3"></div>
+      </div>
+    </div>
+    <div class="flow-skeleton-card space-y-4">
+      <div class="skeleton-line h-10 w-36"></div>
+      <div class="skeleton-line h-3 w-4/5"></div>
+      <div class="space-y-2">
+        <div class="skeleton-line h-3"></div>
+        <div class="skeleton-line h-3 w-11/12"></div>
+        <div class="skeleton-line h-3 w-3/4"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,33 @@
+.landing-section {
+  @apply px-6 py-24;
+  background: radial-gradient(140% 140% at 50% -40%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 65%), color-mix(in oklab, var(--background) 85%, white);
+}
+
+.section-container {
+  margin-inline: auto;
+  width: min(1120px, 92%);
+}
+
+.section-surface {
+  @apply rounded-3xl p-10 shadow-xl;
+  box-shadow: var(--shadow-xl);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--background) 88%, white) 0%, color-mix(in oklab, var(--background) 90%, var(--primary)) 100%);
+  border: 1px solid color-mix(in oklab, var(--border) 20%, transparent);
+}
+
+.section-subcopy {
+  @apply mt-4 max-w-3xl text-center text-base;
+  color: var(--muted-foreground);
+  margin-inline: auto;
+}
+
+.problem-grid {
+  @apply mt-16 grid gap-8;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .problem-grid {
+    @apply gap-10;
+  }
+}

@@ -1,0 +1,49 @@
+<div class="showcase-container">
+  <header class="showcase-header">
+    <h1>Process Flow Visualization Showcase</h1>
+    <p>Compare both visualization approaches side by side</p>
+  </header>
+
+  <div class="showcase-content">
+    <div class="visualization-container">
+      <div class="visualization-header">
+        <h2>Traditional Timeline View</h2>
+        <p>Vertical presentation emphasizing chronological order</p>
+      </div>
+      <div class="visualization-wrapper">
+        <app-flows-section [flows]="flows"></app-flows-section>
+      </div>
+    </div>
+
+    <div class="visualization-container">
+      <div class="visualization-header">
+        <h2>Horizontal Process Flow</h2>
+        <p>Interactive journey visualization with progress indication</p>
+      </div>
+      <div class="visualization-wrapper">
+        <app-process-flow [flows]="flows"></app-process-flow>
+      </div>
+    </div>
+  </div>
+
+  <footer class="showcase-footer">
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <h3>When to Use Timeline</h3>
+        <ul>
+          <li>Emphasizing chronological order</li>
+          <li>Content-heavy presentations</li>
+          <li>Familiar, traditional approach</li>
+        </ul>
+      </div>
+      <div class="benefit-card">
+        <h3>When to Use Process Flow</h3>
+        <ul>
+          <li>Highlighting journey progression</li>
+          <li>Interactive user experience</li>
+          <li>Modern, engaging presentation</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>

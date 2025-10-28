@@ -1,0 +1,152 @@
+<div class="rewards-shell">
+  <header class="hero-card">
+    <div>
+      <h1>Rewards center</h1>
+      <p>
+        You are a <span class="highlight">{{ currentTier }}</span> — keep compounding
+        engagement to unlock concierge access and priority deal allocations.
+      </p>
+    </div>
+    <button type="button" class="primary">View eligible deals</button>
+    <div
+      class="progress"
+      role="progressbar"
+      aria-valuemin="0"
+      [attr.aria-valuemax]="points.target"
+      [attr.aria-valuenow]="points.current"
+    >
+      <p>Progress to Gold</p>
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="(points.current / points.target) * 100"></div>
+      </div>
+      <span class="caption">{{ progressCopy() }}</span>
+    </div>
+  </header>
+
+  <section class="tier-grid" aria-label="Tier overview">
+    <article *ngFor="let tier of tiers" [ngClass]="{ highlight: tier.highlight }">
+      <div class="tier-image" [style.background-image]="'url(' + tier.image + ')'" aria-hidden="true"></div>
+      <h2>{{ tier.name }}</h2>
+      <p>{{ tier.description }}</p>
+    </article>
+  </section>
+
+  <div class="content-grid">
+    <section class="progress-tracker" aria-labelledby="tracker-title">
+      <h2 id="tracker-title">Point breakdown</h2>
+      <div class="dial" aria-hidden="true">
+        <div class="dial-value">
+          <span class="points">{{ points.current | number }}</span>
+          <span class="label">Total points</span>
+        </div>
+      </div>
+      <ul>
+        <li *ngFor="let item of breakdown">
+          <span class="material-symbols-outlined icon">{{ item.icon }}</span>
+          <span class="item-label">{{ item.label }}</span>
+          <span class="item-points">{{ item.points }}</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="activity-feed" aria-labelledby="activity-title">
+      <h2 id="activity-title">Activity feed</h2>
+      <ul>
+        <li *ngFor="let entry of activity">
+          <span class="material-symbols-outlined">{{ entry.icon }}</span>
+          <div>
+            <p>{{ entry.summary }}</p>
+            <span>{{ entry.timestamp }}</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="missions" aria-labelledby="missions-title">
+      <div class="section-head">
+        <h2 id="missions-title">Missions &amp; challenges</h2>
+        <nav aria-label="Mission filters">
+          <a href="#" class="active">Active</a>
+          <a href="#">Upcoming</a>
+          <a href="#">Completed</a>
+        </nav>
+      </div>
+      <div class="mission-grid">
+        <article *ngFor="let mission of missions" [class.disabled]="mission.disabled">
+          <div>
+            <h3>{{ mission.title }}</h3>
+            <p>{{ mission.description }}</p>
+          </div>
+          <footer>
+            <span class="mission-points">+{{ mission.points }} pts</span>
+            <button type="button" [disabled]="mission.disabled">{{ mission.action }}</button>
+          </footer>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <section class="catalog" aria-labelledby="catalog-title">
+    <div class="section-head">
+      <h2 id="catalog-title">Rewards catalog</h2>
+      <div class="catalog-filters">
+        <label>
+          <span class="visually-hidden">Filter category</span>
+          <select>
+            <option>All categories</option>
+            <option>Rebates</option>
+            <option>Swag</option>
+            <option>Perks</option>
+          </select>
+        </label>
+        <label>
+          <span class="visually-hidden">Sort rewards</span>
+          <select>
+            <option>Sort: Popular</option>
+            <option>Cost: Low to high</option>
+            <option>Cost: High to low</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="catalog-grid">
+      <article *ngFor="let reward of catalog" [class.disabled]="reward.disabled">
+        <div class="reward-media" [ngClass]="{ icon: reward.icon }" [style.background-image]="reward.image ? 'url(' + reward.image + ')' : ''">
+          <span *ngIf="reward.icon && !reward.image" class="material-symbols-outlined">{{ reward.icon }}</span>
+        </div>
+        <h3>{{ reward.title }}</h3>
+        <p>{{ reward.description }}</p>
+        <button type="button" [disabled]="reward.disabled">{{ reward.cost }}</button>
+      </article>
+    </div>
+  </section>
+
+  <section class="referral" aria-labelledby="referral-title">
+    <h2 id="referral-title">Referral tracker</h2>
+    <div class="referral-grid">
+      <div class="referral-card">
+        <p>Your invite link</p>
+        <div class="link-row">
+          <input type="text" [value]="referrals.link" readonly />
+          <button type="button">
+            <span class="material-symbols-outlined">content_copy</span>
+            Copy
+          </button>
+        </div>
+        <div class="divider"><span>or</span></div>
+        <p class="qr-caption">Share this QR code</p>
+        <div class="qr-placeholder" aria-hidden="true"></div>
+      </div>
+      <div class="referral-stats">
+        <div>
+          <span class="value">{{ referrals.referrals }}</span>
+          <span class="label">Successful referrals</span>
+        </div>
+        <div>
+          <span class="value">{{ referrals.points }}</span>
+          <span class="label">Points earned</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,12 @@
+<article class="flex h-full flex-col gap-5 rounded-3xl border border-white/10 bg-slate-900/60 p-6 shadow-lg shadow-slate-900/40">
+  <div>
+    <span class="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-300/80">{{ flow.title }}</span>
+    <p class="mt-3 text-sm text-slate-300">{{ flow.summary }}</p>
+  </div>
+  <ul class="space-y-2 text-sm text-slate-200">
+    <li *ngFor="let step of flow.steps" class="flex items-start gap-2">
+      <span class="mt-1 size-1.5 rounded-full bg-emerald-300"></span>
+      <span>{{ step }}</span>
+    </li>
+  </ul>
+</article>

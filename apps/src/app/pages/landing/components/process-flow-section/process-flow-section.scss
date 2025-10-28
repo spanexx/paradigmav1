@@ -1,0 +1,24 @@
+.process-flow-section {
+  @apply relative w-full;
+}
+
+.section-container {
+  @apply mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:py-24;
+}
+
+.section-surface {
+  @apply rounded-3xl p-8 shadow-lg backdrop-blur-sm;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  background: color-mix(in oklab, var(--background) 95%, white);
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    @apply px-4 py-12;
+  }
+  
+  .section-surface {
+    @apply p-6;
+  }
+}

@@ -1,0 +1,160 @@
+<div class="inbox-shell">
+  <aside class="sidebar" aria-label="Inbox navigation">
+    <header class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <p class="title">Paradigma</p>
+        <p class="subtitle">Investor console</p>
+      </div>
+    </header>
+
+    <nav class="nav-links">
+      <a href="#">
+        <span class="material-symbols-outlined">pie_chart</span>
+        Overview
+      </a>
+      <a href="#">
+        <span class="material-symbols-outlined">wallet</span>
+        Wallet
+      </a>
+      <a href="#">
+        <span class="material-symbols-outlined">groups</span>
+        Clubs
+      </a>
+      <a href="#">
+        <span class="material-symbols-outlined">verified_user</span>
+        Compliance
+      </a>
+      <a href="#" class="active">
+        <span class="material-symbols-outlined">inbox</span>
+        Inbox
+      </a>
+    </nav>
+
+    <div class="priority-toggle">
+      <label for="priority">High priority only</label>
+      <input id="priority" type="checkbox" />
+    </div>
+
+    <button type="button" class="primary">New investment</button>
+  </aside>
+
+  <main class="inbox-main">
+    <header class="inbox-head">
+      <div>
+        <p class="breadcrumb">Home / Inbox</p>
+        <h1>Notifications &amp; inbox</h1>
+      </div>
+      <div class="actions">
+        <button type="button">
+          <span class="material-symbols-outlined">done_all</span>
+          Mark all as read
+        </button>
+        <button type="button" class="icon">
+          <span class="material-symbols-outlined">tune</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="search-bar">
+      <span class="material-symbols-outlined">search</span>
+      <input type="search" placeholder="Search notifications" />
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button type="button" [class.active]="filter() === 'all'" (click)="setFilter('all')">
+        All
+        <span>{{ unreadCount() }}</span>
+      </button>
+      <button type="button" [class.active]="filter() === 'unread'" (click)="setFilter('unread')">
+        Unread
+      </button>
+      <button type="button" [class.active]="filter() === 'action'" (click)="setFilter('action')">
+        Action required
+      </button>
+      <button type="button">Archived</button>
+    </div>
+
+    <div class="layout">
+      <section class="feed" aria-label="Notifications">
+        <ng-container *ngFor="let section of filteredSections()">
+          <h2>{{ section.title }}</h2>
+          <p *ngIf="isEmpty(section)" class="empty">Nothing to show.</p>
+          <ul>
+            <li
+              *ngFor="let item of section.items"
+              [ngClass]="['item', item.severity, item.status]
+                "
+              (click)="openMessage(item)"
+            >
+              <div class="item-icon">
+                <span class="material-symbols-outlined">{{ iconFor(item.severity) }}</span>
+              </div>
+              <div class="item-body">
+                <header>
+                  <h3>{{ item.title }}</h3>
+                  <time>{{ item.timestamp }}</time>
+                </header>
+                <p>{{ item.message }}</p>
+                <div class="tags">
+                  <span *ngFor="let tag of item.tags">{{ tag }}</span>
+                </div>
+                <footer *ngIf="item.actionLabel">
+                  <button type="button">{{ item.actionLabel }}</button>
+                </footer>
+              </div>
+              <span class="unread-dot" *ngIf="item.status === 'unread'" aria-label="Unread"></span>
+            </li>
+          </ul>
+        </ng-container>
+      </section>
+
+      <aside class="message" aria-live="polite" aria-label="Notification details">
+        <ng-container *ngIf="current() as active; else emptyState">
+          <header>
+            <div class="pill" [ngClass]="active.notification.severity">
+              {{ active.notification.severity }}
+            </div>
+            <button type="button" class="icon">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </header>
+          <h2>{{ active.notification.title }}</h2>
+          <time>{{ active.notification.timestamp }}</time>
+          <p class="message-body">{{ active.body }}</p>
+          <dl>
+            <div *ngFor="let meta of active.metadata">
+              <dt>
+                <span *ngIf="meta.icon" class="material-symbols-outlined">{{ meta.icon }}</span>
+                {{ meta.label }}
+              </dt>
+              <dd>{{ meta.value }}</dd>
+            </div>
+          </dl>
+          <div class="message-actions">
+            <button type="button" class="primary">
+              <span class="material-symbols-outlined">badge</span>
+              Resolve now
+            </button>
+            <button type="button" class="ghost">
+              <span class="material-symbols-outlined">schedule</span>
+              Remind later
+            </button>
+          </div>
+          <div class="reply-box">
+            <input type="text" placeholder="Reply or add a note" />
+            <button type="button" class="icon">
+              <span class="material-symbols-outlined">send</span>
+            </button>
+          </div>
+        </ng-container>
+        <ng-template #emptyState>
+          <div class="empty-state">
+            <span class="material-symbols-outlined">mail</span>
+            <p>Select a notification to read the full details.</p>
+          </div>
+        </ng-template>
+      </aside>
+    </div>
+  </main>
+</div>

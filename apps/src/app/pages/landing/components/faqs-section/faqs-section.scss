@@ -1,0 +1,57 @@
+section {
+  @apply px-6 py-24;
+}
+
+.faqs-grid {
+  @apply mx-auto mt-16 grid gap-4;
+  width: min(1120px, 92%);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (min-width: 1024px) {
+  .faqs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.cta-card {
+  @apply mx-auto mt-12 flex max-w-4xl flex-wrap items-center justify-between gap-6 rounded-3xl px-8 py-8 shadow-lg;
+  border: 1px solid color-mix(in oklab, var(--primary) 30%, transparent);
+  background: linear-gradient(90deg, color-mix(in oklab, var(--secondary) 70%, black), color-mix(in oklab, var(--primary) 70%, black));
+  box-shadow: 0 10px 15px -3px color-mix(in oklab, var(--primary) 20%, transparent), 0 4px 6px -4px color-mix(in oklab, var(--primary) 20%, transparent);
+}
+
+.cta-content {
+  @apply max-w-xl space-y-2 text-left;
+}
+
+.cta-title {
+  @apply font-display text-2xl;
+  color: var(--background);
+}
+
+.cta-description {
+  @apply text-sm;
+  color: color-mix(in oklab, var(--background) 80%, white);
+}
+
+.cta-button {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold shadow-lg transition hover:shadow-xl;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: var(--primary-foreground);
+  box-shadow: 0 10px 15px -3px color-mix(in oklab, var(--primary) 30%, transparent), 0 4px 6px -4px color-mix(in oklab, var(--primary) 30%, transparent);
+}
+
+@media (max-width: 768px) {
+  .cta-card {
+    @apply flex-col text-center;
+  }
+  
+  .cta-content {
+    @apply text-center;
+  }
+  
+  .cta-button {
+    @apply w-full max-w-xs;
+  }
+}

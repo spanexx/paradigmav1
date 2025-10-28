@@ -1,0 +1,9 @@
+<article class="problem-card" [ngClass]="getCardClass(problem.title)">
+  <div class="problem-card__icon">
+    <span class="material-symbols-outlined">
+      {{ getIconForTitle(problem.title) }}
+    </span>
+  </div>
+  <h3 class="problem-card__title">{{ problem.title }}</h3>
+  <p class="problem-card__copy">{{ problem.detail }}</p>
+</article>

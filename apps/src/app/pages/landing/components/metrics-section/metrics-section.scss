@@ -1,0 +1,50 @@
+.metrics-section {
+  @apply px-6 py-24;
+}
+
+.metrics-surface {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: linear-gradient(180deg, color-mix(in oklab, var(--background) 92%, white) 0%, color-mix(in oklab, var(--background) 95%, var(--primary)) 100%);
+  border-radius: 2rem;
+  box-shadow: 0 32px 65px -48px color-mix(in oklab, var(--foreground) 45%, transparent);
+  border: 1px solid color-mix(in oklab, var(--border) 20%, transparent);
+  padding: clamp(2.5rem, 6vw, 4rem);
+}
+
+.metrics-surface::before {
+  content: '';
+  position: absolute;
+  inset: -40% -20% auto;
+  height: 55%;
+  background: radial-gradient(60% 80% at 50% 0%, color-mix(in oklab, var(--primary) 25%, transparent), transparent 70%);
+  opacity: 0.6;
+}
+
+.metrics-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .metrics-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .metrics-surface {
+    padding: 2rem 1.5rem;
+  }
+}

@@ -1,0 +1,26 @@
+<div
+  class="stat-card"
+  [class.stat-card--positive]="variant === 'positive'"
+  [class.stat-card--negative]="variant === 'negative'"
+  [class.stat-card--neutral]="variant === 'neutral'"
+  [attr.data-variant]="variant"
+>
+  <mat-card class="stat-card__surface">
+    <div class="stat-card__body">
+      <span class="stat-card__value">{{ value }}</span>
+      <p class="stat-card__label">{{ label }}</p>
+      <div *ngIf="delta" class="stat-card__delta">
+        <mat-icon
+          class="stat-card__delta-icon"
+          [class.stat-card__delta-icon--positive]="deltaIcon === 'north_east'"
+          [class.stat-card__delta-icon--negative]="deltaIcon === 'south_east'"
+          [class.stat-card__delta-icon--neutral]="deltaIcon === 'horizontal_rule'"
+        >
+          {{ deltaIcon }}
+        </mat-icon>
+        <span>{{ delta }}</span>
+      </div>
+      <p *ngIf="meta" class="stat-card__meta">{{ meta }}</p>
+    </div>
+  </mat-card>
+</div>

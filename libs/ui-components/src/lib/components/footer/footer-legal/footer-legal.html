@@ -1,0 +1,26 @@
+<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+  <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+    <p class="copyright-text text-sm text-slate-400">{{ footerData.legal.copyright }}</p>
+    <div class="flex items-center gap-6">
+      <a
+        [href]="footerData.legal.privacy.href"
+        class="legal-link text-sm text-slate-400"
+        [target]="footerData.legal.privacy.external ? '_blank' : '_self'"
+        [rel]="footerData.legal.privacy.external ? 'noopener noreferrer' : undefined"
+      >
+        Privacy Policy
+      </a>
+      <a
+        [href]="footerData.legal.terms.href"
+        class="legal-link text-sm text-slate-400"
+        [target]="footerData.legal.terms.external ? '_blank' : '_self'"
+        [rel]="footerData.legal.terms.external ? 'noopener noreferrer' : undefined"
+      >
+        Terms of Service
+      </a>
+    </div>
+  </div>
+  <div class="text-sm text-slate-500">
+    Crafted with precision for the future of finance
+  </div>
+</div>

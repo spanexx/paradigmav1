@@ -1,0 +1,60 @@
+<section class="landing-section flows">
+  <div class="section-container">
+    <div class="section-surface">
+      <lib-section-header
+        align="center"
+        eyebrow="Club journey"
+        title="From discovery to exit"
+        description="A guided, auditable path—no matter where you enter."
+      ></lib-section-header>
+
+      <div class="section-subcopy">
+        Every stage is instrumented with workflows, alerts, and capital controls so your club never loses momentum.
+      </div>
+
+      <ng-container *ngIf="!loading && flows.length; else flowsSkeleton">
+        <div class="flows-roadmap">
+          <div *ngFor="let flow of flows; let index = index" class="flows-step">
+            <div class="flows-step__marker">0{{ index + 1 }}</div>
+            <div class="flows-step__content">
+              <h3 class="flows-step__title">{{ flow.title }}</h3>
+              <p class="flows-step__summary">{{ flow.summary }}</p>
+              <ul class="flows-step__list">
+                <li *ngFor="let step of flow.steps">
+                  <span class="flows-step__bullet"></span>
+                  <span>{{ step }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 flex flex-col items-center gap-4 text-center">
+          <a
+            routerLink="/process-flow-demo"
+            class="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-600"
+          >
+            Explore the interactive flow demo
+            <span class="material-symbols-outlined text-base">precision_manufacturing</span>
+          </a>
+          <p class="max-w-lg text-sm text-slate-500">Preview the guided workflows clubs follow from diligence to exit without leaving the page.</p>
+        </div>
+      </ng-container>
+
+      <ng-template #flowsSkeleton>
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+          <div *ngFor="let _ of skeletons" class="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="h-12 w-12 rounded-full bg-slate-200 skeleton-line"></div>
+            <div class="skeleton-line h-4 w-32"></div>
+            <div class="skeleton-line h-3 w-3/4"></div>
+            <div class="space-y-2 pt-4">
+              <div class="skeleton-line h-3"></div>
+              <div class="skeleton-line h-3"></div>
+              <div class="skeleton-line h-3 w-5/6"></div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>

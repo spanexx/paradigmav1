@@ -1,0 +1,31 @@
+<section class="landing-section">
+  <div class="section-container">
+    <div class="section-surface">
+      <lib-section-header 
+        align="center" 
+        title="Built for trust and speed" 
+        description="Stay compliant, stay connected, and see the why behind the numbers.">
+      </lib-section-header>
+      
+      <div class="differentiators-grid">
+        <app-differentiator-card 
+          *ngFor="let differentiator of differentiators" 
+          [differentiator]="differentiator">
+        </app-differentiator-card>
+      </div>
+
+      <div class="mt-14 flex flex-col items-center gap-4 text-center">
+        <a
+          routerLink="/dashboard"
+          class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/30 transition hover:bg-slate-800"
+        >
+          See governance in action
+          <span class="material-symbols-outlined text-base">verified_user</span>
+        </a>
+        <p class="max-w-md text-sm text-slate-500">
+          Explore live compliance, audit trails, and automation that keep every club investment aligned.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

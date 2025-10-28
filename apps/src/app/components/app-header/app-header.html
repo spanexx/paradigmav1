@@ -1,0 +1,24 @@
+<header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+  <div class="mx-auto flex w-[90%] items-center justify-between gap-4 px-6 py-4">
+    <a routerLink="/" class="group flex items-center gap-3" aria-label="Paradigma" (click)="onNavSelect('/')">
+      <img
+        src="/logo.png"
+        alt="Paradigma logo"
+        class="h-12 w-12 rounded-2xl border border-emerald-400/40 bg-emerald-400/10 p-2 transition group-hover:border-emerald-300/60 group-hover:bg-emerald-400/20"
+      />
+      <span class="font-display text-lg font-semibold tracking-wide">Paradigma</span>
+    </a>
+
+    <app-nav [navItems]="navItems" (navSelected)="onNavSelect($event)"></app-nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        routerLink="/dashboard"
+        class="hidden items-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400 px-5 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5 md:inline-flex"
+      >
+        Launch app
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,15 @@
+<div class="section-header" [ngClass]="{
+  'section-header--start': align === 'start',
+  'section-header--center': align === 'center',
+  'section-header--end': align === 'end'
+}">
+  <div class="section-header__icon" *ngIf="matIcon || nbIcon">
+    <span *ngIf="matIcon" class="material-symbols-outlined">{{ matIcon }}</span>
+    <nb-icon *ngIf="nbIcon" [icon]="nbIcon"></nb-icon>
+  </div>
+  <div class="section-header__content">
+    <p *ngIf="eyebrow" class="section-header__eyebrow">{{ eyebrow }}</p>
+    <h2 class="section-header__title">{{ title }}</h2>
+    <p *ngIf="description" class="section-header__description">{{ description }}</p>
+  </div>
+</div>

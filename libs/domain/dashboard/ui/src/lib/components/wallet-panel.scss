@@ -1,0 +1,100 @@
+.wallet-shell {
+  border-radius: 1.5rem;
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(16px);
+  padding: 2rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.wallet-title {
+  font-family: var(--font-display, 'Work Sans', sans-serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.wallet-stats {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.wallet-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.wallet-label {
+  color: var(--muted-foreground);
+}
+
+.wallet-copy,
+.wallet-value,
+.wallet-positive {
+  margin: 0;
+}
+
+.wallet-value {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.wallet-positive {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.rewards-card {
+  border-radius: 1.15rem;
+  background: linear-gradient(135deg, color-mix(in oklab, var(--card) 78%, transparent), color-mix(in oklab, var(--primary) 18%, transparent));
+  color: var(--card-foreground);
+  padding: 1.6rem;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.rewards-tier {
+  margin: 0;
+  font-weight: 600;
+  color: color-mix(in oklab, var(--primary) 85%, transparent);
+}
+
+.rewards-next,
+.rewards-streak {
+  margin: 0;
+  font-size: 0.85rem;
+  color: color-mix(in oklab, var(--muted-foreground) 80%, transparent);
+}
+
+.rewards-streak {
+  font-size: 0.8rem;
+}
+
+.rewards-card .progress-track {
+  margin-top: 0.25rem;
+  height: 0.6rem;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--muted) 70%, transparent);
+  overflow: hidden;
+}
+
+.rewards-card .progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background-image: linear-gradient(90deg, var(--primary), color-mix(in oklab, var(--secondary) 40%, var(--primary) 60%));
+  transition: width 0.35s ease;
+}

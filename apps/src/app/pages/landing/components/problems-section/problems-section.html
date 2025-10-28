@@ -1,0 +1,31 @@
+<section class="landing-section landing-section--pale">
+  <div class="section-container">
+    <div class="section-surface">
+      <lib-section-header
+        align="center"
+        eyebrow="Solving the blockers"
+        title="Why Paradigma"
+        description="We clear the three biggest hurdles to investing together."
+      ></lib-section-header>
+
+      <div class="section-subcopy">
+        Hard numbers, clear governance, and effortless exits keep every club aligned from day one.
+      </div>
+
+      <div class="problem-grid">
+        <app-problem-card *ngFor="let problem of problems" [problem]="problem"></app-problem-card>
+      </div>
+
+      <div class="mt-16 flex flex-col items-center gap-4 text-center">
+        <a
+          routerLink="/process-flow-demo"
+          class="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-600"
+        >
+          Talk to a club advisor
+          <span class="material-symbols-outlined">chat</span>
+        </a>
+        <p class="max-w-md text-sm text-slate-500">Schedule a 15-minute walkthrough to see how Paradigma fits your club.</p>
+      </div>
+    </div>
+  </div>
+</section>

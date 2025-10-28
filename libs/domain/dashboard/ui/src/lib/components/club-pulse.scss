@@ -1,0 +1,98 @@
+.club-pulse-shell {
+  border-radius: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(18px);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.club-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.club-header-title {
+  font-family: var(--font-display, 'Work Sans', sans-serif);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.club-header-copy {
+  color: var(--muted-foreground);
+}
+
+.club-view-all {
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  color: var(--muted-foreground);
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.club-view-all:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+  background: color-mix(in oklab, var(--primary) 8%, transparent);
+}
+
+.club-list {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.club-item {
+  position: relative;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+  background: color-mix(in oklab, var(--card) 90%, transparent);
+  backdrop-filter: blur(16px);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+  overflow: hidden;
+}
+
+.club-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: color-mix(in oklab, var(--ring) 10%, transparent);
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.club-item:hover {
+  border-color: color-mix(in oklab, var(--ring) 55%, transparent);
+  box-shadow: var(--shadow-md);
+}
+
+.club-item:hover::after {
+  opacity: 1;
+}
+
+.avatar {
+  font-family: var(--font-display, 'Work Sans', sans-serif);
+  letter-spacing: 0.05em;
+}
+
+.club-name {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.club-headline {
+  color: var(--muted-foreground);
+}
+
+.club-meta {
+  color: color-mix(in oklab, var(--muted-foreground) 75%, transparent);
+}
+
+.club-action {
+  color: var(--primary);
+}

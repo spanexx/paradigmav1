@@ -1,0 +1,64 @@
+.comparison-container {
+  @apply rounded-2xl p-8 shadow-lg;
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  background: var(--background);
+}
+
+.comparison-title {
+  @apply mb-8 text-center text-2xl font-bold;
+  color: var(--foreground);
+}
+
+.comparison-grid {
+  @apply grid gap-8 md:grid-cols-2;
+}
+
+.comparison-card {
+  @apply rounded-xl p-6 transition-all duration-300;
+  border: 1px solid color-mix(in oklab, var(--border) 50%, transparent);
+  background: color-mix(in oklab, var(--muted) 50%, transparent);
+  
+  &:hover {
+    border: 1px solid var(--primary);
+    background: color-mix(in oklab, var(--primary) 5%, transparent);
+  }
+}
+
+.comparison-card-title {
+  @apply mb-4 text-xl font-semibold;
+  color: var(--foreground);
+}
+
+.comparison-list {
+  @apply space-y-3;
+}
+
+.comparison-list-item {
+  @apply flex items-start gap-3;
+}
+
+.comparison-icon {
+  color: var(--primary);
+}
+
+.comparison-footer {
+  @apply mt-8 text-center;
+}
+
+.comparison-footer p {
+  color: var(--muted-foreground);
+}
+
+@media (max-width: 768px) {
+  .comparison-container {
+    @apply p-4;
+  }
+  
+  .comparison-grid {
+    @apply gap-6;
+  }
+  
+  .comparison-card {
+    @apply p-4;
+  }
+}

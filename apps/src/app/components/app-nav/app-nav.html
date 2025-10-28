@@ -1,0 +1,17 @@
+<nav class="hidden items-center gap-2 md:flex" aria-label="Primary navigation">
+  <a
+    *ngFor="let item of navItems"
+    [routerLink]="item.href"
+    routerLinkActive
+    #linkActive="routerLinkActive"
+    [ngClass]="{
+      'bg-emerald-400/10 text-white': linkActive.isActive,
+      'text-slate-300': !linkActive.isActive
+    }"
+    class="rounded-full px-4 py-2 text-sm font-medium transition hover:bg-white/5 hover:text-white"
+    [routerLinkActiveOptions]="{ exact: true }"
+    (click)="onSelect(item.href)"
+  >
+    {{ item.label }}
+  </a>
+</nav>

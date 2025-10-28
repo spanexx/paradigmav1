@@ -1,0 +1,58 @@
+:host {
+  @apply block;
+}
+
+.footer-shell {
+  @apply relative overflow-hidden border-t border-white/10 text-slate-200;
+  background: radial-gradient(140% 160% at 50% -45%, #1c3663, #0a1427 55%, #040a16 100%);
+}
+
+.footer-gradient {
+  position: absolute;
+  inset: -15% -10% auto;
+  height: 70%;
+  background: radial-gradient(60% 60% at 20% 20%, rgba(94, 234, 212, 0.35), transparent 70%),
+    radial-gradient(45% 45% at 80% 15%, rgba(56, 189, 248, 0.28), transparent 75%);
+  filter: blur(80px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.footer-curve {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 140px;
+  background: linear-gradient(to top, rgba(8, 15, 30, 0) 0%, rgba(8, 15, 30, 0.6) 60%, rgba(8, 15, 30, 0.9) 100%);
+  clip-path: ellipse(160% 70% at 50% 100%);
+}
+
+.footer-inner {
+  @apply relative;
+  z-index: 1;
+}
+
+.footer-main {
+  @apply relative;
+}
+
+.footer-bottom {
+  background: linear-gradient(180deg, rgba(4, 10, 22, 0.3) 0%, rgba(4, 10, 22, 0.75) 100%);
+}
+
+.footer-inner p {
+  @apply text-slate-300;
+}
+
+.footer-inner a {
+  @apply text-slate-200 transition-colors;
+
+  &:hover {
+    @apply text-emerald-300;
+  }
+}
+
+.footer-main img {
+  box-shadow: 0 18px 45px -24px rgba(94, 234, 212, 0.4);
+}
